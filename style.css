@@ -13,6 +13,9 @@ body {
         #ffcc70 100%
     );
     height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .clock {
@@ -82,18 +85,48 @@ body {
 
 /* Ponteiros */
 
+.clock::after {
+    content: "";
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    z-index: 11;
+    background-color: black;
+    transform: translate(-50%, -50%);
+}
+
 .clock .hand {
-    --rotation: 30;
+    --rotation: 0;
 
     position: absolute;
     bottom: 50%;
     left: 50%;
-    width: 7px;
-    height: 40%;
     background-color: black;
     z-index: 10;
     transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
     transform-origin: bottom;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+}
+
+.clock .hand.seconds {
+    width: 2px;
+    height: 40%;
+    background-color: red;
+}
+
+.clock .hand.minutes {
+    width: 5px;
+    height: 35%;
+    background-color: black;
+}
+
+
+.clock .hand.hours {
+    width: 8px;
+    height: 25%;
+    background-color: black;
 }
